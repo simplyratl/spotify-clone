@@ -1,0 +1,43 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Figtree:wght@300;400;500;600;700;800;900&display=swap');
+
+body {
+  font-family: 'Figtree', sans-serif;
+  background-color: #000;
+}
+
+::-webkit-scrollbar {
+  width: 12px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #5a5a5a;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+.gradient-1 {
+  @apply bg-gradient-to-b to-transparent from-[#496DDB];
+}
+
+.gradient-2 {
+  @apply bg-gradient-to-b to-transparent from-[#717EC3];
+}
+
+.gradient-3 {
+  @apply bg-gradient-to-b to-transparent from-[#C95D63];
+}
+
+.gradient-4 {
+  @apply bg-gradient-to-b to-transparent from-[#EE8434];
+}
+
+.gradient-5 {
+  @apply bg-gradient-to-b to-transparent from-[#496DDB];
+}
