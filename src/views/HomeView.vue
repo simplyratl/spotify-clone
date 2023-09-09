@@ -8,7 +8,7 @@ const forYouRow = ref([])
 
 onMounted(() => {
   axios
-    .get('http://192.168.1.8:8080/song/for-you')
+    .get('/api/song/for-you')
     .then((res) => {
       forYouRow.value = res.data
     })

@@ -28,3 +28,6 @@ coverage
 *.sw?
 
 .vscode
+
+.env.development
+.env.production
