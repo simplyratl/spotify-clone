@@ -9,10 +9,12 @@ import router from './router'
 import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 import axios from 'axios'
 
+// Vue.prototype.$http = axios
+
 axios.interceptors.request.use(
   function (config) {
     // Get the base URL from the environment variable
-    config.baseURL = process.env.VUE_APP_BASE_URL
+    config.baseURL = import.meta.env.VITE_API_BASE_URL
 
     // You can also add other headers or configuration here
 
