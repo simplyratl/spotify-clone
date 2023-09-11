@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted, onBeforeUnmount, watch } from 'vue'
+import { ref, onMounted, onBeforeUnmount, watch, watchEffect } from 'vue'
 import ChevronRight from 'vue-material-design-icons/ChevronRight.vue'
 import ChevronLeft from 'vue-material-design-icons/ChevronLeft.vue'
 import { useColorStore } from '../../stores/color'
@@ -13,12 +13,13 @@ const handleScroll = () => {
 }
 
 onMounted(() => {
-  container.value = document.querySelector('.main-container')
-})
+  setTimeout(() => {
+    container.value = document.querySelector('.main-container')
 
-watch(container, (newContainer) => {
-  if (!newContainer) return
-  newContainer.addEventListener('scroll', handleScroll)
+    if (!container.value) return
+
+    container.value.addEventListener('scroll', handleScroll)
+  }, 0)
 })
 
 onBeforeUnmount(() => {

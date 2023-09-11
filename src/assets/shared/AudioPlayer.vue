@@ -184,7 +184,7 @@ watch(
               max="100"
               @input="handleSeekLevel($event)"
               :value="level"
-              style="width: 100px"
+              style="width: 100px; min-width: 100%"
             />
             <div class="slider-thumb" :style="{ left: level + '%' }"></div>
             <div class="progress" :style="{ width: level + '%' }"></div>
@@ -214,7 +214,7 @@ watch(
   background: #333333;
   outline: none;
   border-radius: 9999px;
-  @apply w-full sm:w-[300px] md:w-[400px] lg:w-[626px];
+  @apply w-full sm:w-[300px] md:w-[400px] lg:w-full lg:min-w-[626px];
 }
 
 .slider::-webkit-slider-thumb {
