@@ -1,23 +1,28 @@
 <script setup>
-import { ref, onMounted, onBeforeUnmount, watch, watchEffect } from 'vue'
-import ChevronRight from 'vue-material-design-icons/ChevronRight.vue'
+import { computed, nextTick, onBeforeUnmount, onMounted, ref } from 'vue'
 import ChevronLeft from 'vue-material-design-icons/ChevronLeft.vue'
+import ChevronRight from 'vue-material-design-icons/ChevronRight.vue'
 import { useColorStore } from '../../stores/color'
+import { useAuthStore } from '../../stores/auth'
+
+const color = useColorStore().colorFull
+const user = useAuthStore().getUser()
 
 const scrolled = ref(false)
-const color = useColorStore().colorFull
 const container = ref(null)
 
 const handleScroll = () => {
   scrolled.value = container.value.scrollTop > 80
 }
 
+const checkUser = computed(() => {
+  return user ?? false
+})
+
 onMounted(() => {
   setTimeout(() => {
-    container.value = document.querySelector('.main-container')
-
+    container.value = document.getElementById('#main-container')
     if (!container.value) return
-
     container.value.addEventListener('scroll', handleScroll)
   }, 0)
 })
@@ -47,7 +52,7 @@ onBeforeUnmount(() => {
         </div>
       </div>
 
-      <div class="flex items-center gap-2">
+      <div class="flex items-center gap-2" v-if="checkUser">
         <a
           href="https://www.spotify.com/me-en/download/windows/"
           target="_blank"
@@ -66,6 +71,19 @@ onBeforeUnmount(() => {
             />
           </div>
         </div>
+      </div>
+
+      <div v-else class="flex gap-8">
+        <button type="button" class="text-neutral-400 hover:text-white transition-colors text-sm">
+          Sign up
+        </button>
+        <RouterLink
+          to="/login"
+          type="button"
+          class="bg-white px-8 py-3 rounded-3xl text-sm font-semibold hover:scale-105"
+        >
+          Login
+        </RouterLink>
       </div>
     </div>
   </header>

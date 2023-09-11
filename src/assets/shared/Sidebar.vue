@@ -3,6 +3,9 @@ import { RouterLink } from 'vue-router'
 import { Home } from 'lucide-vue-next'
 import { Search } from 'lucide-vue-next'
 import { Library } from 'lucide-vue-next'
+import { useAuthStore } from '../../stores/auth'
+
+const user = useAuthStore().getUser()
 
 const categories = ['Playlists', 'Artists', 'Albums', 'Podcasts & Shows']
 
@@ -46,8 +49,12 @@ const array = new Array(30).fill(0)
       </div>
 
       <div class="mt-6 px-2 h-full rounded-md overflow-hidden">
-        <ul class="overflow-y-auto h-[calc(100vh-342px)]">
-          <li v-for="item in array" class="cursor-pointer hover:bg-[#1A1A1A] rounded-lg">
+        <ul class="overflow-y-auto h-[calc(100vh-342px)]" v-if="user">
+          <li
+            v-for="item in array"
+            v-bind:key="item"
+            class="cursor-pointer hover:bg-[#1A1A1A] rounded-lg"
+          >
             <div class="px-2 flex gap-2 py-2">
               <img
                 class="w-14 h-14 object-cover rounded-lg"
@@ -63,6 +70,17 @@ const array = new Array(30).fill(0)
             </div>
           </li>
         </ul>
+
+        <div v-else class="px-6">
+          <h4 class="text-md text-white">Create your first playlist</h4>
+          <p class="text-sm text-gray-300 mt-2.5">It's easy we'll help you</p>
+
+          <div class="mt-4">
+            <button class="text-black bg-white px-6 py-2 rounded-full text-xs font-semibold">
+              Create playlist
+            </button>
+          </div>
+        </div>
       </div>
     </div>
   </header>

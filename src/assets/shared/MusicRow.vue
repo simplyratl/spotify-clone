@@ -25,7 +25,7 @@ const handleSongClick = (song) => {
 </script>
 
 <template>
-  <div class="px-6 my-8" v-if="data.length > 0">
+  <div class="px-6" v-if="data.length > 0">
     <h3 class="text-xl text-white">
       <RouterLink to="/" class="text-white text-2xl font-semibold hover:underline">
         {{ title }}</RouterLink

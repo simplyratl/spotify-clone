@@ -9,8 +9,6 @@ import router from './router'
 import piniaPluginPersistedstate from 'pinia-plugin-persistedstate'
 import axios from 'axios'
 
-// Vue.prototype.$http = axios
-
 axios.interceptors.request.use(
   function (config) {
     // Get the base URL from the environment variable
